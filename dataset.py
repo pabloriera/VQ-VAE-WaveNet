@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import librosa, json
 from tqdm import tqdm
-from scipy.io import wavfile
+import soundfile as sf
 from utils import get_speaker_to_int
 
 
@@ -37,8 +37,7 @@ class Dataset():
             while True:
                 i = np.random.choice(indices)
                 filename = self.all_files[i]
-                _, wav = wavfile.read(data_dir + filename)
-                wav = (wav + 0.5) / 32767.5
+                wav, sr = sf.read(data_dir + filename)
                 start = np.random.randint(low=0, 
                                           high=len(wav) - max_len)
                 wav = wav[start: start + max_len]
