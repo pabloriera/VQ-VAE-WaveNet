@@ -109,7 +109,16 @@ class Dataset():
         print('data total:', len(data))
         return data, len(data), speakers
 
+class LibriSpeechDev(Dataset):
+    def __init__(self, batch_size=1, max_len=5120, sr=16000, relative_path=''):
+        super(LibriSpeech, self).__init__()
 
+        self.filename = 'librispeech_info/librispeech_dev_clean.txt'
+        self.speaker_file = 'librispeech_info/librispeech_dev_speakers.txt'
+        self.data_dir = ''
+        self.split_func = lambda s: s.split('/')[-1].split('-', 1)[0]
+        self.make_iterator(relative_path, max_len, sr, batch_size)
+        
 class LibriSpeech(Dataset):
     def __init__(self, batch_size=1, max_len=5120, sr=16000, relative_path=''):
         super(LibriSpeech, self).__init__()
