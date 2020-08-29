@@ -111,7 +111,7 @@ class Dataset():
 
 class LibriSpeechDev(Dataset):
     def __init__(self, batch_size=1, max_len=5120, sr=16000, relative_path=''):
-        super(LibriSpeech, self).__init__()
+        super(LibriSpeechDev, self).__init__()
 
         self.filename = 'librispeech_info/librispeech_dev_clean.txt'
         self.speaker_file = 'librispeech_info/librispeech_dev_speakers.txt'
