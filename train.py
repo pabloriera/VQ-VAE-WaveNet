@@ -94,7 +94,7 @@ print('[restore] last global step: %d, learning rate: %.5f' % (gs, lr))
 
 save_path = args.save_path
 save_name = Path(save_path).name
-save_path = Path(save_path).parents[0]
+save_dir = Path(save_path).parents[0]
 
 if not os.path.isdir(save_dir):
     os.mkdir(save_dir)
