@@ -124,7 +124,7 @@ class LibriSpeech(Dataset):
         super(LibriSpeech, self).__init__()
 
         self.filename = 'librispeech_info/librispeech_train_clean_100.txt'
-        self.speaker_file = 'librispeech_infolibrispeech_speakers.txt'
+        self.speaker_file = 'librispeech_info/librispeech_speakers.txt'
         self.data_dir = ''
         self.split_func = lambda s: s.split('/')[-1].split('-', 1)[0]
         self.make_iterator(relative_path, max_len, sr, batch_size)
