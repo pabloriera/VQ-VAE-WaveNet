@@ -44,8 +44,10 @@ dataset_args = {
 
 if args.dataset == 'VCTK':
     dataset = VCTK(**dataset_args)
-elif args.dataset == 'LibriSpeech':
+elif args.dataset == 'LibriSpeechDev':
     dataset = LibriSpeechDev(**dataset_args)
+elif args.dataset == 'LibriSpeech':
+    dataset = LibriSpeech(**dataset_args)
 elif args.dataset == 'Aishell':
     dataset = Aishell(**dataset_args)
 else:
