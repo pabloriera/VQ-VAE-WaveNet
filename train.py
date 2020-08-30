@@ -6,6 +6,7 @@ from utils import display_time, suppress_tf_warning
 import tensorflow as tf
 import time, os, sys, json
 from argparse import ArgumentParser
+from pathlib import Path
 
 suppress_tf_warning()
 
@@ -44,10 +45,10 @@ dataset_args = {
 
 if args.dataset == 'VCTK':
     dataset = VCTK(**dataset_args)
-elif args.dataset == 'LibriSpeechDev':
-    dataset = LibriSpeechDev(**dataset_args)
 elif args.dataset == 'LibriSpeech':
     dataset = LibriSpeech(**dataset_args)
+elif args.dataset == 'LibriSpeechDev':
+    dataset = LibriSpeechDev(**dataset_args)
 elif args.dataset == 'Aishell':
     dataset = Aishell(**dataset_args)
 else:
@@ -92,7 +93,9 @@ lr = sess.run(model.lr)
 print('[restore] last global step: %d, learning rate: %.5f' % (gs, lr))
 
 save_path = args.save_path
-save_dir, save_name = save_path.split('/')
+save_name = Path(save_path).name
+save_path = Path(save_path).parents[0]
+
 if not os.path.isdir(save_dir):
     os.mkdir(save_dir)
 
